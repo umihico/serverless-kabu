@@ -22,11 +22,12 @@ service: serverless-kabu
 
 provider:
   name: aws
-  runtime: python3.8
-
-# you can overwrite defaults here
-#  stage: dev
-#  region: us-east-1
+  runtime: python3.7
+  stage: ${opt:stage, 'dev'}
+  environment:
+    STAGE: ${self:provider.stage}
+  region: ${file(credential.yml):region}
+  profile: ${file(credential.yml):profile}
 
 # you can add statements to the Lambda function's IAM Role here
 #  iamRoleStatements:
@@ -44,9 +45,6 @@ provider:
 #            - "Ref" : "ServerlessDeploymentBucket"
 #            - "/*"
 
-# you can define service wide environment variables here
-#  environment:
-#    variable1: value1
 
 # you can add packaging information here
 #package:
