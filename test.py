@@ -1,5 +1,6 @@
 
 from chrome import ServerlessChrome
+from ssm import test_get_ssm_value
 
 
 def lambda_test(event=None, context=None):
@@ -7,6 +8,7 @@ def lambda_test(event=None, context=None):
         'message': 'lambda passed tests',
         'details': {
             'test_chrome': test_chrome(),
+            'test_get_ssm_value': test_get_ssm_value(),
         }
     }
 

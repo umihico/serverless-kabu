@@ -28,6 +28,11 @@ provider:
     STAGE: ${self:provider.stage}
   region: ${file(credential.yml):region}
   profile: ${file(credential.yml):profile}
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - "ssm:GetParameter"
+      Resource: "*"
 
 # you can add statements to the Lambda function's IAM Role here
 #  iamRoleStatements:
