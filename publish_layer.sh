@@ -4,6 +4,7 @@ unzip headless-chromium.zip -d python/bin/
 curl -SL https://chromedriver.storage.googleapis.com/2.37/chromedriver_linux64.zip > chromedriver.zip
 unzip chromedriver.zip -d python/bin/
 docker run --rm -v $(pwd):/var/task -w /var/task lambci/lambda:build-python3.7 pip install selenium -t ./python
+docker run --rm -v $(pwd):/var/task -w /var/task lambci/lambda:build-python3.7 pip install requests -t ./python
 zip -r layer.zip python
 aws lambda publish-layer-version --layer-name kabu_selenium --zip-file fileb://layer.zip --compatible-runtimes python3.7
 rm -rf layer.zip python chromedriver.zip headless-chromium.zip
