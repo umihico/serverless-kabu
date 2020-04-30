@@ -1,3 +1,4 @@
+from pprint import pformat
 import requests
 from ssm import get_ssm_value
 
@@ -15,6 +16,10 @@ def send_text(text, channel_id=None):
 
 def test_send_text():
     response = send_text("THIS IS TEST.")
+    response.raise_for_status()
+    json = response.json()
+    assert json['ok']
+    response = send_text(pformat({'asset': '10,000円'}))
     response.raise_for_status()
     json = response.json()
     assert json['ok']
