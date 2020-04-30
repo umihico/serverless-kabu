@@ -64,6 +64,7 @@ functions:
   test:
     handler: test.lambda_test
     layers: ${file(credential.yml):layers}
+    timeout: 900
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
 #    Check the event documentation for details
