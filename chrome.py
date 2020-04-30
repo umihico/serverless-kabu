@@ -56,12 +56,17 @@ class KabuChrome(ServerlessChrome, metaclass=ABCMeta):
     def test(self):
         result = {
             'login': self.test_login(),
+            'get_current_asset': self.test_get_current_asset(),
         }
         self.quit()
         return result
 
     @abstractmethod
     def test_login(self):
+        pass
+
+    @abstractmethod
+    def test_get_current_asset(self):
         pass
 
 
