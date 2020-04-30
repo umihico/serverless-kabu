@@ -53,6 +53,14 @@ class KabuChrome(ServerlessChrome, metaclass=ABCMeta):
     def login(self):
         pass
 
+    def test(self):
+        self.test_login()
+        self.quit()
+
+    @abstractmethod
+    def test_login(self):
+        pass
+
 
 def test_chrome():
     chrome = ServerlessChrome()
